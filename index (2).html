@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Campaign Charmers</title>
+    <style>
+        /* Cosmic Style Base */
+        :root {
+            --neon-pink: #ff00ff;
+            --cyber-blue: #00ffff;
+            --toxic-green: #7fff00;
+            --plasma-purple: #9400d3;
+            --matrix-black: #000300;
+        }
+
+        body {
+            margin: 0;
+            background: var(--matrix-black);
+            font-family: 'Courier New', monospace;
+            color: white;
+            overflow-x: hidden;
+        }
+
+        /* Cyber Header with Animated Rope */
+        header {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: 
+                radial-gradient(circle at 50% 50%, 
+                    rgba(255,0,255,0.2) 0%, 
+                    rgba(0,0,0,0) 70%),
+                linear-gradient(45deg, 
+                    var(--matrix-black) 0%, 
+                    #0a0a3a 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cyber-rope {
+            position: absolute;
+            width: 300%;
+            height: 50px;
+            background: repeating-linear-gradient(
+                45deg,
+                var(--neon-pink),
+                var(--neon-pink) 20px,
+                var(--cyber-blue) 20px,
+                var(--cyber-blue) 40px
+            );
+            animation: ropeSlide 20s linear infinite;
+        }
+
+        @keyframes ropeSlide {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+
+        h1.campaign-title {
+            font-size: 5rem;
+            text-transform: uppercase;
+            background: linear-gradient(
+                45deg,
+                var(--neon-pink),
+                var(--cyber-blue),
+                var(--toxic-green)
+            );
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 
+                0 0 10px var(--neon-pink),
+                0 0 20px var(--cyber-blue),
+                0 0 30px var(--toxic-green);
+            animation: titleGlitch 2s infinite;
+            position: relative;
+            z-index: 2;
+        }
+
+        @keyframes titleGlitch {
+            0%, 100% { transform: translate(0); }
+            20% { transform: translate(-2px, 2px); }
+            40% { transform: translate(-2px, -2px); }
+            60% { transform: translate(2px, 2px); }
+            80% { transform: translate(2px, -2px); }
+        }
+
+        /* Holographic Section Divider */
+        .hologram-divider {
+            height: 10px;
+            background: linear-gradient(90deg,
+                transparent,
+                var(--neon-pink),
+                var(--cyber-blue),
+                var(--toxic-green),
+                transparent
+            );
+            margin: 50px 0;
+            animation: hologramFlow 3s linear infinite;
+        }
+
+        @keyframes hologramFlow {
+            0% { background-position: -200% 0; }
+            100% { background-position: 200% 0; }
+        }
+
+        /* UGC Services Grid */
+        .service-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            padding: 50px;
+        }
+
+        .service-card {
+            background: rgba(0, 0, 0, 0.7);
+            border: 2px solid var(--neon-pink);
+            padding: 30px;
+            border-radius: 15px;
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.3s;
+        }
+
+        .service-card:hover {
+            transform: scale(1.05);
+        }
+
+        .service-card::before {
+            content: "";
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: conic-gradient(
+                var(--cyber-blue),
+                var(--plasma-purple),
+                var(--neon-pink),
+                var(--toxic-green),
+                var(--cyber-blue)
+            );
+            animation: rotateBorder 4s linear infinite;
+            z-index: -1;
+        }
+
+        @keyframes rotateBorder {
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Process Timeline */
+        .process-timeline {
+            display: flex;
+            justify-content: space-between;
+            padding: 50px;
+            position: relative;
+        }
+
+        .process-step {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            background: var(--matrix-black);
+            border: 3px solid var(--toxic-green);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+            animation: pulseCircle 2s infinite;
+        }
+
+        .process-step::after {
+            content: "";
+            position: absolute;
+            width: 50px;
+            height: 3px;
+            background: var(--neon-pink);
+            right: -53px;
+            animation: connectorFlow 2s infinite;
+        }
+
+        @keyframes pulseCircle {
+            0%, 100% { box-shadow: 0 0 0 0 rgba(127, 255, 0, 0.5); }
+            50% { box-shadow: 0 0 0 20px rgba(127, 255, 0, 0); }
+        }
+
+        /* Stats Grid */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            padding: 50px;
+        }
+
+        .stat-box {
+            background: rgba(255, 0, 255, 0.1);
+            padding: 30px;
+            border: 1px solid var(--cyber-blue);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .stat-box::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+                90deg,
+                transparent,
+                rgba(0, 255, 255, 0.3),
+                transparent
+            );
+            animation: statGlow 3s infinite;
+        }
+
+        @keyframes statGlow {
+            100% { left: 100%; }
+        }
+
+        /* Testimonial Carousel */
+        .testimonial-container {
+            display: grid;
+            grid-auto-flow: column;
+            gap: 40px;
+            padding: 50px;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+        }
+
+        .testimonial-bubble {
+            min-width: 300px;
+            background: rgba(0, 255, 255, 0.1);
+            padding: 30px;
+            border-radius: 20px;
+            border: 2px solid var(--toxic-green);
+            position: relative;
+            scroll-snap-align: start;
+        }
+
+        .testimonial-bubble::after {
+            content: "❝";
+            position: absolute;
+            top: -20px;
+            left: 20px;
+            font-size: 4rem;
+            color: var(--neon-pink);
+            text-shadow: 0 0 10px var(--neon-pink);
+        }
+
+        /* Cyber CTAs */
+        .cyber-cta {
+            display: inline-block;
+            padding: 20px 40px;
+            margin: 30px;
+            font-size: 1.2rem;
+            text-transform: uppercase;
+            background: linear-gradient(
+                45deg,
+                var(--neon-pink),
+                var(--plasma-purple)
+            );
+            border: none;
+            border-radius: 0;
+            position: relative;
+            overflow: hidden;
+            animation: ctaPulse 1.5s infinite;
+        }
+
+        @keyframes ctaPulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        .cyber-cta::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+                90deg,
+                transparent,
+                rgba(255, 255, 255, 0.3),
+                transparent
+            );
+            animation: ctaGlow 2s infinite;
+        }
+
+        @keyframes ctaGlow {
+            100% { left: 100%; }
+        }
+
+    </style>
+</head>
+<body>
+    <header>
+        <div class="cyber-rope"></div>
+        <h1 class="campaign-title">CAMPAIGN<br>CHARMERS</h1>
+        <div class="cyber-rope"></div>
+    </header>
+
+    <div class="hologram-divider"></div>
+
+    <section id="about">
+        <h2>About Our UGC Magic</h2>
+        <p>We transform ordinary content into <span class="highlight">viral-ready UGC gold</span> through our proprietary blend of creativity, data science, and pure marketing alchemy.</p>
+    </section>
+
+    <div class="hologram-divider"></div>
+
+    <section id="services">
+        <h2>Our UGC Arsenal</h2>
+        <div class="service-grid">
+            <div class="service-card">
+                <h3>Content Creation</h3>
+                <p>From $499/mo<br>
+                Scroll-stopping UGC assets</p>
+            </div>
+            <div class="service-card">
+                <h3>Strategy Blueprints</h3>
+                <p>From $799/mo<br>
+                Data-driven content plans</p>
+            </div>
+            <div class="service-card">
+                <h3>Full Management</h3>
+                <p>From $1299/mo<br>
+                End-to-end UGC campaigns</p>
+            </div>
+        </div>
+    </section>
+
+    <div class="hologram-divider"></div>
+
+    <section id="process">
+        <h2>Our 4-Step Process</h2>
+        <div class="process-timeline">
+            <div class="process-step">Discovery & Strategy</div>
+            <div class="process-step">Content Creation</div>
+            <div class="process-step">Optimization</div>
+            <div class="process-step">Launch & Monitor</div>
+        </div>
+    </section>
+
+    <div class="hologram-divider"></div>
+
+    <section id="stats">
+        <div class="stats-grid">
+            <div class="stat-box">
+                <h3>427%</h3>
+                <p>Average ROI Increase</p>
+            </div>
+            <div class="stat-box">
+                <h3>1.2M+</h3>
+                <p>Content Pieces Created</p>
+            </div>
+            <div class="stat-box">
+                <h3>94%</h3>
+                <p>Client Retention Rate</p>
+            </div>
+            <div class="stat-box">
+                <h3>48h</h3>
+                <p>Fastest Viral Hit</p>
+            </div>
+        </div>
+    </section>
+
+    <div class="hologram-divider"></div>
+
+    <section id="testimonials">
+        <div class="testimonial-container">
+            <div class="testimonial-bubble">
+                <p>"Changed our content game overnight! Our engagement tripled in 30 days."</p>
+                <h4>- Alex R., ViralCo</h4>
+            </div>
+            <div class="testimonial-bubble">
+                <p>"Finally found a team that gets Gen Z humor. Our TikTok exploded!"</p>
+                <h4>- Sam K., Trendsetters</h4>
+            </div>
+            <div class="testimonial-bubble">
+                <p>"Worth every penny. We went from 10K to 100K followers in 2 months."</p>
+                <h4>- Jordan M., StartupX</h4>
+            </div>
+            <div class="testimonial-bubble">
+                <p>"Their UGC strategies are pure gold. 10/10 would recommend!"</p>
+                <h4>- Taylor B., EcoWear</h4>
+            </div>
+        </div>
+    </section>
+
+    <div class="hologram-divider"></div>
+
+    <section id="contact">
+        <a href="https://calendly.com/hello-campaigncharmers/20-min-discovery-call" class="cyber-cta">Book Strategy Call</a>
+        <a href="mailto:hello@campaigncharmers.com" class="cyber-cta">Email Our Team</a>
+    </section>
+
+    <script>
+        // Add dynamic particle effect
+        document.addEventListener('DOMContentLoaded', function() {
+            const header = document.querySelector('header');
+            for(let i = 0; i < 100; i++) {
+                const particle = document.createElement('div');
+                particle.style.position = 'absolute';
+                particle.style.width = '2px';
+                particle.style.height = '2px';
+                particle.style.background = `hsl(${Math.random()*360}, 100%, 50%)`;
+                particle.style.borderRadius = '50%';
+                particle.style.left = `${Math.random()*100}%`;
+                particle.style.top = `${Math.random()*100}%`;
+                particle.style.animation = `floatParticle ${5 + Math.random()*10}s infinite`;
+                header.appendChild(particle);
+            }
+        });
+
+        // Add scroll animations
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if(entry.isIntersecting) {
+                    entry.target.style.animationPlayState = 'running';
+                }
+            });
+        });
+
+        document.querySelectorAll('.service-card, .process-step, .stat-box').forEach(el => {
+            el.style.animationPlayState = 'paused';
+            observer.observe(el);
+        });
+    </script>
+
+</body>
+</html>
