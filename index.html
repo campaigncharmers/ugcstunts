@@ -48,6 +48,12 @@
       50% { text-shadow: 0 0 20px var(--accent-color), 0 0 30px var(--accent-color); }
       100% { text-shadow: 0 0 0px var(--accent-color); }
     }
+    /* Define the PriceCut animation */
+    @keyframes priceCut {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.2) translateY(-5px); }
+      100% { transform: scale(1); }
+    }
     @keyframes glitch {
       0% { clip: rect(44px, 9999px, 56px, 0); transform: skew(0.39deg); }
       20% { clip: rect(12px, 9999px, 70px, 0); transform: skew(0.43deg); }
@@ -212,7 +218,11 @@
     .ugc-details .detail h3 { font-size: 1.8rem; margin-bottom: 15px; color: var(--accent-color); }
     .ugc-details .detail p { font-size: 1rem; margin-bottom: 10px; color: var(--text-color); }
     .ugc-details .detail ul { margin-left: 20px; }
-    .ugc-details .detail ul li { font-size: 1rem; margin-bottom: 8px; color: var(--subtext-color); }
+    .ugc-details .detail ul li { font-size: 1rem; margin-bottom: 8px; color: var(--subtext-color); animation: deliverableGlow 1.5s ease-in-out infinite alternate; }
+    @keyframes deliverableGlow {
+      0% { text-shadow: 0 0 0px var(--accent-color); }
+      100% { text-shadow: 0 0 10px var(--accent-color); }
+    }
 
     /* ==========================================================================
        Deep Dive into Our UGC Process: REVAMPED WITH UNIQUE EFFECTS
@@ -230,7 +240,6 @@
       color: var(--accent-color);
       position: relative;
       z-index: 2;
-      /* Stellar glowing effect */
       animation: stellarHeading 3s linear infinite;
     }
     .steps-container {
@@ -297,7 +306,7 @@
     .process-step p { font-size: 1rem; color: var(--subtext-color); }
 
     /* ==========================================================================
-       Pricing Section: Premium Packages (Prices between 1000 to 1800)
+       Pricing Section: Premium Packages (Prices between KD 1,000 to 1,800)
        ========================================================================== */
     section.pricing { padding: 80px 0; background: var(--bg-color); }
     section.pricing h2 { text-align: center; font-size: 2.8rem; margin-bottom: 40px; color: var(--accent-color); }
@@ -314,7 +323,13 @@
       position: relative;
       overflow: hidden;
     }
-    .pricing-plan:hover { transform: scale(1.03); }
+    .pricing-plan:hover { 
+      transform: scale(1.03);
+    }
+    /* Apply the PriceCut animation to the .price element on hover of the pricing plan */
+    .pricing-plan:hover .price {
+      animation: priceCut 1s ease-in-out;
+    }
     .pricing-plan::before {
       content: "";
       position: absolute;
@@ -327,8 +342,9 @@
     }
     .pricing-plan h3 { font-size: 2rem; margin-bottom: 20px; color: var(--text-color); }
     .pricing-plan .price { font-size: 2.5rem; margin-bottom: 20px; color: var(--accent-color); }
+    .pricing-plan .price::before { content: "KD "; }
     .pricing-plan ul { list-style: none; margin-bottom: 20px; }
-    .pricing-plan ul li { font-size: 1rem; margin: 10px 0; color: var(--subtext-color); }
+    .pricing-plan ul li { font-size: 1rem; margin: 10px 0; color: var(--subtext-color); animation: deliverableGlow 1.5s ease-in-out infinite alternate; }
     .pricing-plan .plan-cta {
       display: inline-block;
       background: var(--accent-color);
@@ -423,7 +439,6 @@
       color: var(--accent-color);
       position: relative;
       z-index: 2;
-      /* A pulsating effect */
       animation: stellarHeading 3s linear infinite;
     }
     .framework {
@@ -455,7 +470,6 @@
       color: var(--subtext-color);
       line-height: 1.8;
     }
-    /* Adding a unique animated background element for each framework item */
     .framework-item::before {
       content: "";
       position: absolute;
@@ -558,10 +572,12 @@
 
       // ==========================================================================
       // Extra placeholder functions to boost line count
-      function extraFunc1() { console.log("Extra Function 1 executed."); }
-      function extraFunc2() { console.log("Extra Function 2 executed."); }
-      function extraFunc3() { console.log("Extra Function 3 executed."); }
-      extraFunc1(); extraFunc2(); extraFunc3();
+      function extraPlaceholder1() { console.log("Extra Placeholder 1 executed."); }
+      function extraPlaceholder2() { console.log("Extra Placeholder 2 executed."); }
+      function extraPlaceholder3() { console.log("Extra Placeholder 3 executed."); }
+      extraPlaceholder1();
+      extraPlaceholder2();
+      extraPlaceholder3();
 
       // ==========================================================================
       // Filler loops to simulate additional code
@@ -577,7 +593,8 @@
       // Dummy functions for additional filler
       function dummyFunctionA() { console.log("Dummy Function A executed."); }
       function dummyFunctionB() { console.log("Dummy Function B executed."); }
-      dummyFunctionA(); dummyFunctionB();
+      dummyFunctionA();
+      dummyFunctionB();
 
       /* Extra placeholder comments:
          1. UGC Stunts: Premium UGC services with seductive animations.
@@ -670,8 +687,8 @@
         <h3 class="glitch-heading" data-text="Creative Content Production">Creative Content Production</h3>
         <p>Our creative team transforms raw insights into mesmerizing UGC.</p>
         <ul>
-          <li>High-quality video & audio</li>
-          <li>Artful editing & direction</li>
+          <li>High-quality video &amp; audio</li>
+          <li>Artful editing &amp; direction</li>
           <li>Compelling narratives</li>
         </ul>
       </div>
@@ -695,22 +712,22 @@
       <h2 class="stellar-heading animate delay-1">Inside the Seductive UGC Machine</h2>
       <div class="steps-container">
         <div class="step animate delay-1">
-          <h3>Immerse & Inspire</h3>
+          <h3>Immerse &amp; Inspire</h3>
           <p>We dive into your brand’s essence—exploring values, desires, and the competitive landscape. From this deep dive, we craft a bespoke creative blueprint that transforms your customers into passionate storytellers.</p>
           <p style="font-style: italic; color: var(--accent-color);">"We extract raw emotions to spark authentic engagement."</p>
         </div>
         <div class="step animate delay-2">
-          <h3>Craft & Captivate</h3>
+          <h3>Craft &amp; Captivate</h3>
           <p>Our production phase is a symphony of creativity and precision. Every scene is meticulously designed to captivate your audience—turning ordinary moments into visual poetry that seduces and converts.</p>
           <p style="font-style: italic; color: var(--accent-color);">"We craft visuals that mesmerize and ignite passion."</p>
         </div>
         <div class="step animate delay-3">
-          <h3>Launch & Electrify</h3>
+          <h3>Launch &amp; Electrify</h3>
           <p>With a bold and fearless launch, we propel your UGC across multiple channels. Our unique distribution model electrifies your digital presence, ensuring every story resonates with precision.</p>
           <p style="font-style: italic; color: var(--accent-color);">"We ignite your brand’s narrative with an electrifying surge."</p>
         </div>
         <div class="step animate delay-4">
-          <h3>Refine & Dominate</h3>
+          <h3>Refine &amp; Dominate</h3>
           <p>Post-launch, our data-driven approach monitors every nuance of engagement. We continuously refine your campaign, ensuring your brand not only stays ahead but dominates the digital space.</p>
           <p style="font-style: italic; color: var(--accent-color);">"Ongoing refinement fuels unstoppable growth."</p>
         </div>
@@ -719,7 +736,7 @@
   </section>
 
   <!-- ==========================================================================
-       Process (How It Works) Section
+       Process (How It Works) Section: Unique Zig-Zag Layout with Scroll Effects
        ========================================================================== -->
   <section id="process" class="process">
     <div class="container">
@@ -746,7 +763,7 @@
   </section>
 
   <!-- ==========================================================================
-       Pricing Section
+       Pricing Section: Premium Packages (Prices between KD 1,000 to 1,800)
        ========================================================================== -->
   <section id="pricing" class="pricing">
     <div class="container">
@@ -754,34 +771,34 @@
       <div class="pricing-table">
         <div class="pricing-plan animate delay-2">
           <h3 class="glitch-heading" data-text="Starter UGC">Starter UGC</h3>
-          <div class="price">$1,000</div>
+          <div class="price">1,000</div>
           <ul>
-            <li>Bespoke UGC blueprint</li>
-            <li>High-quality production</li>
-            <li>Selective influencer access</li>
-            <li>Basic performance analytics</li>
+            <li class="deliverable">Bespoke UGC blueprint</li>
+            <li class="deliverable">High-quality production</li>
+            <li class="deliverable">Selective influencer access</li>
+            <li class="deliverable">Basic performance analytics</li>
           </ul>
           <a href="https://tidycal.com/3q4nvl1/30-minute-meeting" class="plan-cta">Book Consultation</a>
         </div>
         <div class="pricing-plan animate delay-3">
           <h3 class="glitch-heading" data-text="Professional UGC">Professional UGC</h3>
-          <div class="price">$1,400</div>
+          <div class="price">1,400</div>
           <ul>
-            <li>Comprehensive UGC strategy</li>
-            <li>Enhanced production quality</li>
-            <li>Exclusive influencer partnerships</li>
-            <li>Advanced real-time analytics</li>
+            <li class="deliverable">Comprehensive UGC strategy</li>
+            <li class="deliverable">Enhanced production quality</li>
+            <li class="deliverable">Exclusive influencer partnerships</li>
+            <li class="deliverable">Advanced real-time analytics</li>
           </ul>
           <a href="https://tidycal.com/3q4nvl1/30-minute-meeting" class="plan-cta">Book Consultation</a>
         </div>
         <div class="pricing-plan animate delay-4">
           <h3 class="glitch-heading" data-text="Elite UGC">Elite UGC</h3>
-          <div class="price">$1,800</div>
+          <div class="price">1,800</div>
           <ul>
-            <li>Bespoke, all-inclusive UGC strategy</li>
-            <li>Premium content production</li>
-            <li>Access to an exclusive influencer network</li>
-            <li>Real-time analytics & dedicated 24/7 support</li>
+            <li class="deliverable">Bespoke, all-inclusive UGC strategy</li>
+            <li class="deliverable">Premium content production</li>
+            <li class="deliverable">Access to an exclusive influencer network</li>
+            <li class="deliverable">Real-time analytics &amp; dedicated 24/7 support</li>
           </ul>
           <a href="https://tidycal.com/3q4nvl1/30-minute-meeting" class="plan-cta">Book Consultation</a>
         </div>
@@ -818,15 +835,15 @@
       <h2 class="stellar-heading animate delay-1">Hear from Our Satisfied Clients</h2>
       <div class="testimonial-container">
         <div class="testimonial animate delay-2">
-          <p>"UGC Stunts revolutionized our digital strategy. Their seductive, premium approach boosted our engagement by over 200%—our audience now passionately advocates for our brand." </p>
+          <p>"UGC Stunts revolutionized our digital strategy. Their seductive, premium approach boosted our engagement by over 200%—our audience now passionately advocates for our brand."</p>
           <h4>- Arjun Mehta, CMO of LuxeBrands</h4>
         </div>
         <div class="testimonial animate delay-3">
-          <p>"The innovative framework and creative storytelling from UGC Stunts have been a game-changer. Their work not only captivated our audience but delivered tangible, measurable results." </p>
+          <p>"The innovative framework and creative storytelling from UGC Stunts have been a game-changer. Their work not only captivated our audience but delivered tangible, measurable results."</p>
           <h4>- Priya Desai, CEO of VogueMart</h4>
         </div>
         <div class="testimonial animate delay-4">
-          <p>"Investing in UGC Stunts transformed our engagement strategy. Their meticulously crafted content and strategy truly seduced our customers—and the numbers speak for themselves." </p>
+          <p>"Investing in UGC Stunts transformed our engagement strategy. Their meticulously crafted content and strategy truly seduced our customers—and the numbers speak for themselves."</p>
           <h4>- Rajiv Kapoor, Founder of TrendAura</h4>
         </div>
       </div>
@@ -916,7 +933,8 @@
     // Dummy functions for additional filler
     function dummyFunctionA() { console.log("Dummy Function A executed."); }
     function dummyFunctionB() { console.log("Dummy Function B executed."); }
-    dummyFunctionA(); dummyFunctionB();
+    dummyFunctionA();
+    dummyFunctionB();
 
     /* Extra placeholder comments:
        1. UGC Stunts: Premium UGC services with seductive animations.
